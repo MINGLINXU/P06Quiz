@@ -1,13 +1,15 @@
 package sg.edu.rp.soi.p06_quiz;
 
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvResult;
     EditText num1;
     EditText num2;
+    Button btnreset;
 
 
     @Override
@@ -29,10 +32,22 @@ public class MainActivity extends AppCompatActivity {
         tvResult = findViewById(R.id.result);
         num1 = findViewById(R.id.etNum1);
         num2 = findViewById(R.id.etNum2);
+        btnreset = findViewById(R.id.btnReset);
 
 
         registerForContextMenu(tvOperation);
+
+        btnreset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1.setText("");
+                num2.setText("");
+                tvResult.setText("");
+            }
+        });
     }
+
+
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
@@ -68,5 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onContextItemSelected(item); //pass menu item to the superclass implementation
     }
+
+
+
 
 }
